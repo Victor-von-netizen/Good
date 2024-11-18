@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        /* Header with background image */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            background-image: url('motari.jpg'); /* Use the image name */
+            background-size: cover; /* Ensures the image covers the area */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat;
+            border-radius: 8px; /* Optional for rounded edges */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional for a shadow effect */
+        }
+    
+        header h1 {
+            font-size: 36px; /* Increase font size */
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+        }
+    
+        header p {
+            font-size: 18px; /* Larger introductory text */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+        }
+    
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 18px; /* Larger navigation text */
+        }
+    
+        nav a {
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+        }
+    
+        /* Section titles */
+        section h2 {
+            font-size: 32px;
+            color: #004d40;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    
+        /* Share Experiences Section */
+        #share-experiences {
+            padding: 20px;
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+    
+        #share-experiences h2, #share-experiences h3 {
+            color: #00796b;
+            text-align: center;
+        }
+    
+        #experience-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        #experience-form label {
+            font-size: 16px;
+            color: #004d40;
+        }
+    
+        #experience-input, #name-input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #b2dfdb;
+            border-radius: 4px;
+            font-size: 16px;
+            resize: vertical;
+            background-color: #ffffff;
+        }
+    
+        #experience-list p {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #b2dfdb;
+            margin-bottom: 10px;
+            color: #004d40;
+            font-size: 16px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        button[type="button"] {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        button[type="button"]:hover {
+            background-color: #004d40;
+        }
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences - Rwanda Culture Guide</title>
+</head>
+<body>
+
+<header>
+    <h1>Rwanda Culture Guide: Experiences</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+   
+    <a href="dos.html">Do's</a>
+    <a href="donts.html">Don'ts</a>
+    <a href="Share experiences.html">Share experiences</a>
+    <a href="references.html">References</a>
+</nav>
+
+<section>
+    <h2>Experiences</h2>
+    <p>Thank you for learning about Rwanda’s culture! This guide aims to help you have a respectful and enjoyable experience.</p>
+</section>
+<section id="share-experiences">
+    <h2>Share Your Experiences in Kigali</h2>
+    <form id="experience-form">
+        <label for="name-input">Your Name:</label>
+        <input type="text" id="name-input" placeholder="Enter your name(made up is acceptable)" required>
+        
+        <label for="experience-input">Tell us about your time in Kigali:</label>
+        <textarea id="experience-input" rows="4" placeholder="Write your experience here..." required></textarea>
+        
+        <button type="button" onclick="addExperience()">Share Experience</button>
+    </form>
+
+    <h3>Visitor Experiences:</h3>
+    <div id="experience-list">
+        <!-- Shared experiences will appear here -->
+    </div>
+</section>
+
+<script>
+    // Function to add the user's experience along with their name to the list
+    function addExperience() {
+        const nameInput = document.getElementById("name-input");
+        const experienceInput = document.getElementById("experience-input");
+        const name = nameInput.value.trim();
+        const experienceText = experienceInput.value.trim();
+
+        if (name && experienceText) {
+            const experienceList = document.getElementById("experience-list");
+            const newExperience = document.createElement("p");
+            newExperience.innerHTML = `<strong>${name}:</strong> ${experienceText}`;
+            experienceList.appendChild(newExperience);
+            
+            // Clear the input fields
+            nameInput.value = "";
+            experienceInput.value = "";
+        } else {
+            alert("Please enter both your name and experience before sharing.");
+        }
+    }
+</script>
+
+</body>
+</html>
